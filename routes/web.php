@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicDegreeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::resource('grado', AcademicDegreeController::class);
+    });
+});
