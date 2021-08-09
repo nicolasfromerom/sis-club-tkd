@@ -5,7 +5,6 @@
         </h2>
         <p class="font-light text-sm text-gray-800 leading-tight">Registro de Nuevos Estudiantes</p>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-6">
@@ -141,7 +140,11 @@
         document.getElementById("phoneable_apoderado").value = "",
         listarTable();
         apoderado.style.display = "none";
-        toastr.success("Apoderado Agregado Correctamente");
+        Swal.fire({
+            icon: 'success',
+            title: 'Apoderado Agregado Correctamente',
+            showConfirmButton: true,
+        })
     }
 
     const listarTable = () => {
@@ -164,4 +167,14 @@
         }
     }
     </script>
+    @if (session('status'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Estudiante agregado correctamente!',
+                showConfirmButton: true,
+            })
+        </script>
+    @endif
 </x-app-layout>
+
